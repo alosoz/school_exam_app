@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "question_text": "What is 7 × 13?",
+        "options": ["90", "91", "92", "93"],
+        "type": "Multiple-Choice",
+        "score": 10
+    },
+    {
+        "id": 2,
+        "question_text": "Which of the following numbers are prime?",
+        "options": ["9", "11", "15", "19"],
+        "type": "Multiple-Answer",
+        "score": 15
+    },
+    {
+        "id": 3,
+        "question_text": "The sum of the angles of a quadrilateral is 360°.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    },
+    {
+        "id": 4,
+        "question_text": "Which of the following are multiples of 6?",
+        "options": ["12", "15", "18", "20"],
+        "type": "Multiple-Answer",
+        "score": 15
+    },
+    {
+        "id": 5,
+        "question_text": "What is the volume of a cube with side length 5 cm?",
+        "options": ["125 cm³", "150 cm³", "175 cm³", "200 cm³"],
+        "type": "Multiple-Choice",
+        "score": 10
+    },
+    {
+        "id": 6,
+        "question_text": "A rectangle can have equal sides.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    },
+    {
+        "id": 7,
+        "question_text": "Which of the following numbers are divisible by 2?",
+        "options": ["4", "7", "9", "13"],
+        "type": "Multiple-Answer",
+        "score": 10
+    },
+    {
+        "id": 8,
+        "question_text": "The perimeter of a circle is called the diameter.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    },
+    {
+        "id": 9,
+        "question_text": "Which of the following are factors of 18?",
+        "options": ["2", "3", "4", "5"],
+        "type": "Multiple-Answer",
+        "score": 15
+    },
+    {
+        "id": 10,
+        "question_text": "What is the area of a triangle with base 6 cm and height 8 cm?",
+        "options": ["24 cm²", "30 cm²", "36 cm²", "48 cm²"],
+        "type": "Multiple-Choice",
+        "score": 10
+    }
+]

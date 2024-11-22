@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "question_text": "The product of 9 and 6 is 54.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    },
+    {
+        "id": 2,
+        "question_text": "The sum of two even numbers is always even.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    },
+    {
+        "id": 3,
+        "question_text": "What is the perimeter of a triangle with sides 7 cm, 5 cm, and 6 cm?",
+        "options": ["18 cm", "20 cm", "22 cm", "24 cm"],
+        "type": "Multiple-Choice",
+        "score": 10
+    },
+    {
+        "id": 4,
+        "question_text": "What is 36 ÷ 4?",
+        "options": ["6", "8", "10", "12"],
+        "type": "Multiple-Choice",
+        "score": 10
+    },
+    {
+        "id": 5,
+        "question_text": "A square has four equal sides.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    },
+    {
+        "id": 6,
+        "question_text": "Which of the following are multiples of 8?",
+        "options": ["16", "24", "32", "48"],
+        "type": "Multiple-Answer",
+        "score": 15
+    },
+    {
+        "id": 7,
+        "question_text": "The sum of the interior angles of a hexagon is 720°.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 10
+    },
+    {
+        "id": 8,
+        "question_text": "Which of the following is a factor of 45?",
+        "options": ["4", "5", "7", "9"],
+        "type": "Multiple-Choice",
+        "score": 10
+    },
+    {
+        "id": 9,
+        "question_text": "What is the area of a rectangle with length 10 cm and width 3 cm?",
+        "options": ["30 cm²", "40 cm²", "50 cm²", "60 cm²"],
+        "type": "Multiple-Choice",
+        "score": 10
+    },
+    {
+        "id": 10,
+        "question_text": "An obtuse angle is always greater than 90°.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    }
+]
