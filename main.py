@@ -1,8 +1,5 @@
-from user import User, hash_password
-from timer import Timer
-from question import Question
-from exam import Exam
 import json
+from project_tools import *  # Tüm modülleri import eder
 
 
 
@@ -21,7 +18,7 @@ def signup():
     user = User(username, surname, student_number, password)
 
     try:
-        with open("data/user/users.json", "r") as f:
+        with open("user/users.json", "r") as f:
             users_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         users_data = {}
@@ -40,7 +37,7 @@ def login():
     username = input("Enter your username: ").strip()
 
     try:
-        with open("data/user/users.json", "r") as f:
+        with open("user/users.json", "r") as f:
             users_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         print("No users found. Please sign up first.")

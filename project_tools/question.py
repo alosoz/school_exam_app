@@ -11,10 +11,10 @@ class Question:
 
     def load_questions(self):
         try:
-            with open(f'data/questions/questions_section{self.section}.json', 'r') as f:
+            with open(f'questions/questions_section{self.section}.json', 'r') as f:
                 return json.load(f)
         except FileNotFoundError:
-            print(f"Error: 'data/questions/questions_section{self.section}.json' not found!")
+            print(f"Error: 'questions/questions_section{self.section}.json' not found!")
             return []
 
     def randomize_questions(self):
@@ -81,9 +81,9 @@ class Question:
 
     def get_correct_answer(self, question):
         try:
-            with open('data/answers/answers.json', 'r') as f:
+            with open('questions/answers.json', 'r') as f:
                 answers = json.load(f)
                 return answers.get(str(question['id']), "")
         except FileNotFoundError:
-            print("Error: 'data/answers/answers.json' file not found.")
+            print("Error: 'answers/answers.json' file not found.")
             return ""

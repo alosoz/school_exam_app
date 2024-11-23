@@ -21,7 +21,7 @@ class User:
 
     def load_user_data(self):
         try:
-            with open("data/user/users.json", "r") as f:
+            with open("user/users.json", "r") as f:
                 users_data = json.load(f)
 
             if self.username in users_data:
@@ -37,7 +37,7 @@ class User:
                 self.save_user_data(users_data)
 
         except FileNotFoundError:
-            print("data/users/users.json file not found. Creating a new one.")
+            print("user/users.json file not found. Creating a new one.")
             self.save_user_data()
         except json.JSONDecodeError:
             print("The users.json file is empty or corrupted. Creating a new one.")
@@ -46,7 +46,7 @@ class User:
     def save_user_data(self, users_data=None):
         if users_data is None:
             try:
-                with open("data/user/users.json", "r") as f:
+                with open("user/users.json", "r") as f:
                     users_data = json.load(f)
             except (FileNotFoundError, json.JSONDecodeError):
                 users_data = {}
@@ -61,7 +61,7 @@ class User:
             "success_per_section": {k: round(v, 2) for k, v in self.success_per_section.items()}
         }
 
-        with open("data/user/users.json", "w") as f:
+        with open("user/users.json", "w") as f:
             json.dump(users_data, f, indent=4)
 
     def has_attempts_left(self):

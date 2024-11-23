@@ -1,8 +1,5 @@
-from timer import Timer
-from user import User
-from question import Question
-
-
+from .question import Question
+from .timer import Timer
 
 class Exam:
     def __init__(self, user, questions):
