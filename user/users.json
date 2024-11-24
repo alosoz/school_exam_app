@@ -1,0 +1,37 @@
+{
+    "T7956": {
+        "username": "Ali",
+        "surname": "Oz",
+        "teacher_id": "T7956",
+        "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+        "role": "Mathematics"
+    },
+    "S2727": {
+        "username": "Ali",
+        "surname": "Oz",
+        "student_number": "S2727",
+        "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+        "attempts": 1,
+        "score": 15.0,
+        "success_per_section": {
+            "section1": 60.0,
+            "section2": 0,
+            "section3": 0,
+            "section4": 0
+        }
+    },
+    "Oz": {
+        "username": "T7956",
+        "surname": "Ali",
+        "student_number": "Oz",
+        "password": "756bc47cb5215dc3329ca7e1f7be33a2dad68990bb94b76d90aa07f4e44a233a",
+        "attempts": 2,
+        "score": 10.0,
+        "success_per_section": {
+            "section1": 40.0,
+            "section2": 0,
+            "section3": 0,
+            "section4": 0
+        }
+    }
+}

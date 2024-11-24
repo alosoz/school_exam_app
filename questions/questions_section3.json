@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "question_text": "What is the sum of 9 and 8?",
+        "options": ["15", "16", "17", "18"],
+        "type": "Multiple-Choice",
+        "score": 5
+    },
+    {
+        "id": 2,
+        "question_text": "Which of the following are factors of 12?",
+        "options": ["2", "3", "4", "6"],
+        "type": "Multiple-Answer",
+        "score": 10
+    },
+    {
+        "id": 3,
+        "question_text": "Which shape has 6 faces, 8 vertices, and 12 edges?",
+        "options": ["Cube", "Cylinder", "Sphere", "Cone"],
+        "type": "Multiple-Choice",
+        "score": 10
+    },
+    {
+        "id": 4,
+        "question_text": "What is the area of a square with side length 5 cm?",
+        "options": ["10 cm²", "15 cm²", "25 cm²", "30 cm²"],
+        "type": "Multiple-Choice",
+        "score": 5
+    },
+    {
+        "id": 5,
+        "question_text": "What is 15 × 6?",
+        "options": ["80", "90", "100", "110"],
+        "type": "Multiple-Choice",
+        "score": 5
+    },
+    {
+        "id": 6,
+        "question_text": "Which of the following numbers are divisible by 3?",
+        "options": ["9", "12", "15", "18"],
+        "type": "Multiple-Answer",
+        "score": 10
+    },
+    {
+        "id": 7,
+        "question_text": "The sum of the interior angles of a pentagon is 540°.",
+        "options": ["True", "False"],
+        "type": "True-False",
+        "score": 5
+    },
+    {
+        "id": 8,
+        "question_text": "What is 144 ÷ 12?",
+        "options": ["10", "11", "12", "13"],
+        "type": "Multiple-Choice",
+        "score": 5
+    },
+    {
+        "id": 9,
+        "question_text": "Which of the following are even numbers?",
+        "options": ["2", "3", "4", "5"],
+        "type": "Multiple-Answer",
+        "score": 10
+    },
+    {
+        "id": 10,
+        "question_text": "What is the perimeter of a square with side 4 cm?",
+        "options": ["12 cm", "14 cm", "16 cm", "18 cm"],
+        "type": "Multiple-Choice",
+        "score": 5
+    }
+]
