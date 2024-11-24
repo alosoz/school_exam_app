@@ -1,65 +1,127 @@
 from user import User, hash_password
 from timer import Timer
-from question import Question
+from questions import Question
 from exam import Exam
 import json
+import random
 
-
+def generate_unique_id(users_data, role):
+    """
+    Generates a unique ID based on the role (student or teacher).
+    """
+    prefix = "S" if role == "student" else "T"
+    while True:
+        new_id = f"{prefix}{random.randint(1000, 9999)}"
+        # Ensure uniqueness
+        if all(user_data.get("student_number") != new_id and user_data.get("teacher_id") != new_id for user_data in users_data.values()):
+            return new_id
 
 def signup():
     print("\n--- Sign Up ---")
-    username = input("Choose a username: ").strip()
-    surname = input("Enter your surname: ").strip()
-    student_number = input("Enter your student number: ").strip()
+    username = input("Choose a username: ").strip().lower().capitalize()
+    surname = input("Enter your surname: ").strip().lower().capitalize()
+    
+    while True:
+        role = input("Are you signing up as a student or teacher? (student/teacher): ").strip().lower()
+        if role in ["student", "teacher"]:
+            break
+        print("Invalid choice. Please enter 'student' or 'teacher'.")
 
+
+    # If teacher, ask for their subject from a predefined list
+    subject = None
+    if role == "teacher":
+        subjects = ["Mathematics", "Physics", "Chemistry", "Geography"]
+        print("\nAvailable subjects:")
+        for i, subj in enumerate(subjects, 1):
+            print(f"{i}. {subj}")
+        while True:
+            try:
+                choice = int(input("Enter the number corresponding to the subject you teach: ").strip())
+                if 1 <= choice <= len(subjects):
+                    subject = subjects[choice - 1]
+                    break
+                else:
+                    print(f"Please select a valid number between 1 and {len(subjects)}.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+    
     while True:
         password = input("Choose a 4-digit password: ").strip()
         if len(password) == 4 and password.isdigit():
             break
         print("Password must be exactly 4 digits.")
 
-    user = User(username, surname, student_number, password)
 
     try:
-        with open("data/user/users.json", "r") as f:
+        with open("user/users.json", "r") as f:
             users_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         users_data = {}
 
-    if username in users_data:
-        print("Username already exists. Please choose another.")
-        return None
-    else:
-        user.save_user_data(users_data)
-        print(f"User '{username}' successfully registered.")
-        return user
+
+    # Generate unique ID based on the role
+    unique_id = generate_unique_id(users_data, role)
+
+    # Create the user object
+    user = User(
+        username=username,
+        surname=surname,
+        student_number=unique_id if role == "student" else None,
+        teacher_id=unique_id if role == "teacher" else None,
+        password=password,
+        role=subject if role == "teacher" else None
+    )
+    
+
+   
+    user.save_user_data(users_data)
+    print(f"User '{username}' successfully registered.")
+    return user
 
 
 def login():
     print("\n--- Login ---")
-    username = input("Enter your username: ").strip()
+    user_id = input("Enter your Student Number or Teacher ID: ").strip()
 
     try:
-        with open("data/user/users.json", "r") as f:
+        with open("user/users.json", "r") as f:
             users_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         print("No users found. Please sign up first.")
         return None
 
-    if username not in users_data:
-        print("Username not found. Please sign up first.")
+    # Find the user by ID
+    user_data = None
+    for username, data in users_data.items():
+        if data.get("student_number") == user_id or data.get("teacher_id") == user_id:
+            user_data = data
+            break
+
+    if not users_data:
+        print("User not found. Please sign up first.")
         return None
 
     user_data = users_data[username]
+    # load_password = users_data[username]['password']
 
-    user = User(
-                username,
-                user_data['surname'],
-                user_data['student_number'],
-                user_data['password']
-            )
+
+    # Determine the role and ID type
+    role = "teacher" if user_data.get("teacher_id") else "student"
+    print(f"Welcome {user_data['username']} ({role.capitalize()}).")
     
-     # Check if the user has attempts left
+    # Check if the user has attempts left
+    user = User(
+        username,
+        user_data['username'],
+        user_data['surname'],
+        user_data.get('student_number'),
+        user_data.get('password'),
+        user_data.get('teacher_id')
+    )
+    
+    # Check if the user has attempts left
     if not user.has_attempts_left():
         print("You have exceeded the maximum number of login attempts. Please try again later.")
         return None
@@ -69,11 +131,15 @@ def login():
     while password_try < 3:
         password_try += 1
         password = input("Enter your password: ").strip()
-        if hash_password(password) == user_data['password']:
+        hashed_input_password = hash_password(password)
+
+        if hashed_input_password == user_data['password']:
             print("Login successful.")
             return user
         else:
             print("Incorrect password. Try again.")
+            password_try += 1
+    
     print("Too many failed login attempts.")
     return None
 
@@ -102,7 +168,8 @@ def start_exam():
         time_limit = 1800  # 30 minutes
         timer = Timer(time_limit)
         timer.start_timer()
-
+        user.increment_attempts()
+        
         total_score = 0  # Total score across sections
         exam_finished = False  # Flag to track if exam ends early
 
